@@ -66,32 +66,48 @@ h2 span {
 .email-wrapper input{
     background-color: #2C344B;
     border-radius: 28px;
-    width: 300px;
-    height: 50px;
-    color: #FFFFFF;
+    width: 52%;
+    height: 45px;
+    color: #5A668A;
     text-align:justify;
-    font-size: 14px;
+    font-size: 12px;
     border: none;
     outline: none;
     font-weight: bold;
     position: relative;
+    content: '';
 }
 .email-wrapper button {
     border-radius: 28px;
-    height: 45px;
+    height: 43px;
     background-color: #54E6AF;  
     font-weight: bold;
     border: none;
     outline: none;
     position:absolute;
-    
+    left: 30%;
+    right: 0;
+    width: 20%;
+
 }
 .email-wrapper button:hover {
     background-color: #B3FFE2;
     cursor: pointer;
 }
 .footer{
-    align-items: center;
-    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer img{
+    width: 15%;
+    color: #5A668A;
+}
+@media (min-width: 375px){
+
+}
+@media (min-width: 768px){
+    
+}
+@media (min-width: 1440px){
     
 }
