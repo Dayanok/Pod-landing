@@ -125,6 +125,11 @@ h2 span {
     color: grey;
 }
 
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
 .dashboard__main {
     color: white;
     height: 100%;
@@ -176,7 +181,9 @@ button:hover{
 /* latest */
 
 .latest h2{
-    font-size: 2.2em;
+    font-size: 2em;
+    color: white;
+    text-transform:capitalize;
 }
 #shows{
     display: flex;
@@ -205,4 +212,100 @@ button:hover{
 .show img{
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* detail page */
+.show__main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail__header{
+    width: 100%;
+    display: flex;
+    padding: 50px;
+    background: linear-gradient(180deg, rgba(98,148,208,0.95) 0%, rgba(98,148,208,0.95) 17%, rgba(0,212,255,1) 100%);
+    
+}
+
+.detail__header img{
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.detail__header div{
+    color: white;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    line-height: 1.4;
+}
+.detail__header div p{
+    font-size: .5em;
+}
+
+
+.audio{
+    display: flex;
+    color: white;
+    align-items: center;
+    font-weight: bold;
+    font-size: larger;
+    background-color: #2c3348;
+    width: 200px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 35px;
+    justify-content: space-between;
+    transition: box-shadow .2s ease-in;
+}
+.audio p{
+    flex:1;
+    text-align: center;
+}
+.play__button{
+    width: 45px;
+    overflow: hidden;
+}
+
+/* episodes */
+
+.episodes {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.episodes h2{
+    padding: 40px;
+    color: white;
+    text-transform: capitalize;
+    font-size: 2em;
+    font-weight: bold;
+}
+.episode{
+    display:flex;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 160px;
+    cursor: pointer;
+    padding: 40px;
+}
+.episode img{
+    width: 100px;
+    border-radius: 10px;
+    transition: box-shadow .2s ease-out;
+}
+.episode:hover{
+    background-color:#2c3348;
+}
+.episode:hover audio, .episode:hover img{
+    box-shadow: rgba(0,0,0,0.45) 0px 5px 15px;
+}
+
+.episode .episode__details{
+    min-width: 500px;
+    max-width: 500px;
 }

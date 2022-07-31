@@ -18,18 +18,24 @@
                 <li>Library</li>
             </ul>
         </div>
-        <div class="dashboard__main">
+        <div class="show__main">
 
-            <div class="featured__container" id="featured">
-
-            </div>
-            <div class="latest">
-                <h2>Latest</h2>
-                <div id="shows"></div>
-            </div>
+            <div class="detail__header" id="header"></div>
+            
+            
+           
+           <div class="episodes">
+            <h2>Episodes</h2>
+            <div id="episodes"></div>
+        </div>
         </div>
     </div>
     <script src="./js/index.js"></script>
-   
+    <script>
+        let id = location.search.replace('?id=', '');
+        console.log(id);
+        get_show(id);
+        get_episodes(id)
+    </script>
 </body>
 </html>

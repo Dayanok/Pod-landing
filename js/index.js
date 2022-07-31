@@ -1,4 +1,4 @@
-let bearer_token = "BQBMHp4q2oW461z344NpVeMQoCgxb3uzji7udJwTpFS44NaDrR7rTK-ozLkgkEh5Sq8jVwEYKDIeqQolhP4El3CgHnPHsHNHCX3iD4rV87fvjUf8F1fKbvv_TFzKjgadjiCg9YbeFeqGYofwkJzOAsswFdcs6Ey903xcMEOzfKbkjwgcE4_0p-XN4yNHf6o"
+let bearer_token = "BQCEET39lwyaEQzi_P8tqhdwhU1Th2cwJa4DRvwgqFP_cRn_PCXWA8EXs63fdI8JDch5KkxJZ1Mola6FgpFaA1H3Ji_307P7NaNwjYrOf7ls4HHSM2BRsfTp2_GezFVl2Pl0JA3dQLcruW884VXwfW1qfSnAMjpoSeLuJooYRVtbA1ro3fvaaM9bhPA6h64"
 let url = "https://api.spotify.com/v1/shows"
 let bearer = "Bearer " + bearer_token; 
 
@@ -50,7 +50,7 @@ function fetch_latest(){
     .then((data)=>{
         data.shows.forEach(show => {
             let show_html = `
-            <div class='show' onclick='location.href = "${show.external_urls.spotify}"'>
+            <div class='show' onclick='location.href = "show.html?id=${show.id}"'>
                 <img src= '${show.images[1].url}'/>
                     <div>
                         <h4>${show.name}</h4>
@@ -62,7 +62,7 @@ function fetch_latest(){
         })
         
     })
-    .catch(console.log)
+    // .catch(console.log)
     
 }
 
@@ -70,3 +70,63 @@ function fetch_all(){
     fetch_featured();
     fetch_latest();
 }
+
+
+function get_show(id){
+    fetch(url+"/"+id+"?market=ES" , {
+        method:"GET",
+        headers:{
+            'Authorization': bearer,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then((data)=>{return data.json()})
+    .then((data)=>{
+        let header_html = `
+            <img src='${data.images[1].url}' />
+            <div>
+                <p>PODCAST</p>
+                <h4>${data.name}</h4>
+                <h5>${data.publisher}</h5>
+            </div>
+        `
+        document.getElementById("header").innerHTML = header_html;
+    })
+}
+
+function get_episodes(id){
+    fetch(url+"/"+id+"/episodes?market=ES" , {
+        method:"GET",
+        headers:{
+            'Authorization': bearer,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })  
+    .then((data)=>{return data.json()})
+    .then((data)=>{
+        data.items.forEach(episode =>{
+            let episode_html = `
+                <div class="episode">
+                    <img src="${episode.images[1].url}"/>
+
+                    <div class="episode__details">
+                        <h2>${episode.name}</h2>
+                    </div>    
+                        <div class="audio">
+                            <div class="play__button">
+                            <audio src="${episode.audio_preview_url}" controls></audio>
+                             </div>
+           
+                    <p>Preview</p>
+           </div>
+        
+    </div>
+            ` 
+            document.getElementById('episodes').innerHTML += episode_html;
+        })
+    })
+}
+
+
